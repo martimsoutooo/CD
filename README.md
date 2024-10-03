@@ -3,6 +3,7 @@
 * João Roldão - [@JohnnyBoiR04](https://github.com/JohnnyBoiR04)
 * Martim Santos - [@martimsoutooo](https://github.com/martimsoutooo)
 
+## Grades:
 * ChatBot: 20
 * DHT: 20
 * Message Broker: 12
