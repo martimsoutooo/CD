@@ -1,0 +1,47 @@
+PROTOCOLO
+
+1. Geral
+   - Todas as mensagens são precedidas por um header de 2 bytes (big endian) que indica o tamanho da mensagem que se segue.
+
+2. Mensagens do Protocolo
+   A. Connect
+      - Comando: connect
+      - Formato: {"command": "connect", "serializer": <serializer>}
+      - Enviador: Consumer / Producer
+      - Receptor: Broker
+      - Descrição: Conexão e indicação do método de serialização suportado pelo cliente.
+
+   B. Subscribe
+      - Comando: subscribe
+      - Formato: {"command": "subscribe", "topic": <topic>}
+      - Enviador: Consumer
+      - Receptor: Broker
+      - Descrição: Registra o consumidor para receber mensagens publicadas no tópico especificado.
+
+   C. Unsubscribe
+      - Comando: unsubscribe
+      - Formato: {"command": "unsubscribe", "topic": <topic>}
+      - Enviador: Consumer
+      - Receptor: Broker
+      - Descrição: Cancela a subscrição de um tópico específico.
+
+   D. Publish
+      - Comando: publish
+      - Formato: {"command": "publish", "topic": <topic>, "message": <message>}
+      - Enviador: Producer
+      - Receptor: Broker | Consumer
+      - Descrição: Publica uma mensagem no tópico especificado, distribuindo-a aos consumidores subscritos.
+      
+   E. ListMessage
+      - Comando: list
+      - Formato: {"command": "list"}
+      - Enviador: Consumer
+      - Receptor: Broker
+      - Descrição: Solicita uma lista de todos os tópicos disponíveis no broker.
+      
+   F. ListResponse
+      - Comando: list
+      - Formato: {"command": "list", "topicList": [<topicList list>]}
+      - Enviador: Broker
+      - Receptor: Consumer
+      - Descrição: Resposta ao ListMessage com a lista de tópicos disponíveis.
